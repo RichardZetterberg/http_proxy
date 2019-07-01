@@ -34,28 +34,37 @@ http.createServer(function (request, response){//create server listened on port 
   	});
 		
 	
+	//checking for hostname 'https'
 	}else if (elect.hostname == 'https'){
 		var request = Http.request({
    			host: '192.168.5.8',
    			port: 3128,
-    		method: 'CONNECT',
-    		path: 'twitter.com:443',
+    			method: 'CONNECT',
+    			path: 'twitter.com:443',
 		});
 
+		
+		
+		
 		request.on('connect', function (res, socket, head) {
-    	var cts = tls.connect({
-   			host: 'twitter.com',
-    		socket: socket
-    	}, function () {
-        	cts.write('GET / HTTP/1.1rnHost: twitter.comrnrn');
+			//accepts an options argument which contains the socket we received from the connect event handler.
+    			var cts = tls.connect({
+   				host: 'twitter.com',
+    				socket: socket
+    			}, function () {
+        			cts.write('GET / HTTP/1.1rnHost: twitter.comrnrn');
     	});
 
-    	cts.on('data', function (data) {
-        	console.log(data.toString());
-    	});
+			
+    		cts.on('data', function (data) {//show data
+        		console.log(data.toString());
+    		});
 	});
 
 		req.end();
+		
+		
+	//if anything else error on console	
 	}else console.log('Error. Something went wrong!!!');
 }).listen(3000);
 
