@@ -85,7 +85,7 @@ http.createServer(function (request, response){//create server listened on port 
 
 	})
 
-	server.listen(8080);//server listening on port: 8080
+	server.listen(8000);//server listening on port: 8000
 		
 	//if anything else error on console	
 	}else console.log('Error. Something went wrong!!!');
