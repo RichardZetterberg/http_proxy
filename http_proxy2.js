@@ -1,31 +1,39 @@
+//connecting main modules
 var http = require('http');
 var tls = require('tls');
 var url = require('url');
 
-http.createServer(function (request, response){
-	var elect = url.parse(request.url);
-	if (elect.hostname == 'http'){
-		console.log('serve: ' + request.url);
-
- 		var options = {
-  	 	hostname: 'www.google.com',
-    	port: 80,
-    	path: request.url,
-    	method: request.method,
-    	headers: request.headers
-  	};
-
+http.createServer(function (request, response){//create sercer listened on port 3000
+	
+	var elect = url.parse(request.url);//parse the address bar 
+	
+	if (elect.hostname == 'http'){//choose between 'http' and 'https' functions. If another then catch mistake 
+		
+		console.log('serve: ' + request.url);//log reference on requested object
+		
+		//object of options 
+ 		var options = { 	
+  	 		hostname: 'www.google.com',
+    			port: 80,
+    			path: request.url,
+    			method: request.method,
+    			headers: request.headers
+  		};
+	
+	//reproduce the query
   	var proxy = http.request(options, function (res) {
     	response.writeHead(res.statusCode, res.headers)
 
     	res.pipe(response, {
       			end: true
     		});
-  		});
+  	});
 
   	request.pipe(proxy, {
     	end: true
   	});
+		
+	
 	}else if (elect.hostname == 'https'){
 		var request = Http.request({
    			host: '192.168.5.8',
