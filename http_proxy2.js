@@ -3,7 +3,7 @@ var http = require('http');
 var tls = require('tls');
 var url = require('url');
 
-http.createServer(function (request, response){//create sercer listened on port 3000
+http.createServer(function (request, response){//create server listened on port 3000
 	
 	var elect = url.parse(request.url);//parse the address bar 
 	
