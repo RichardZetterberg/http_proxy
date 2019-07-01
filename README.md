@@ -1,6 +1,6 @@
 # http_proxy
 
-This file consists of code for creating proxy server, which supports http and https protocols. It doesn't support library http-proxy.
+This file consist code for creating proxy server, which supports http and https protocols. It doesn't support library http-proxy.
 
 
                                                   **Main idea** 
@@ -16,4 +16,4 @@ Previously installed a browser utility that will proxy requests through your loc
 
 
 
-Creator - Dmytrenko Dmytro, 2019
+*Creator - Dmytrenko Dmytro, 2019*
